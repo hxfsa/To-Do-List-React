@@ -2,18 +2,30 @@ import { useState } from "react";
 import { PlusIcon } from '@heroicons/react/24/solid'
 
 
-function CustomForm({  }) {
- 
+function CustomForm({ addTask }) {
 
+  const [task, setTask] = useState("")
+ 
+const handleFormSubmit = (e) => {
+  e.preventDefault();
+  addTask({
+    name: task,
+    id: Date.now(),
+    checked: false,
+  });
+  setTask("");
+}
   return (
-    <form className="todo" onSubmit={handleFormSubmit}>
+    <form className="todo" 
+    onSubmit={handleFormSubmit}
+    >
       <div className="wrapper">
         <input
           type="text"
           id="task"
           className="input"
-          // value={}
-          // onInput={}
+          value={task}
+          onInput={(e) => setTask(e.target.value)}
           // onChange={}
           required
           autoFocus
@@ -25,7 +37,7 @@ function CustomForm({  }) {
         </label>
       </div>
       <button className="btn" aria-label="Add Task" type="submit">
-        {/* <PlusIcon /> */}
+        <PlusIcon />
       </button>
     </form>
   );
