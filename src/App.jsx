@@ -7,7 +7,7 @@ function App() {
 
   const localData = localStorage.getItem("My dev tasks");
   const initialValue = JSON.parse(localData);
-  const [arrayOfTasks, setArrayOfTasks] = useState(initialValue);
+  const [arrayOfTasks, setArrayOfTasks] = useState(initialValue || []);
   const [showEditForm, setShowEditForm] = useState(false);
   const [updatingTask, setUpdatingTask] = useState();
 
